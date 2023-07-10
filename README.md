@@ -1,1 +1,1 @@
-# miuul_ml
+# Miuul Makine Öğrenmesi Yaz Kampı 
