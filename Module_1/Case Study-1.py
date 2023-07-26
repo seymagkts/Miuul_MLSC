@@ -158,3 +158,4 @@ def kume(kume1, kume2):
         print(kume2.difference(kume1))
 
 kume(kume1,kume2)
+
