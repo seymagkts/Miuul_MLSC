@@ -109,14 +109,12 @@ df.groupby(["pclass","sex"]).agg({"survived":["sum","count","mean"]})
 
 func = lambda x: 1 if x < 30 else 0
 df["age_flag"] = df["age"].apply(func)
-df
 
 #################################################
 # Seaborn kütüphanesi içerisinden Tips veri setini tanımlayınız.
 #################################################
 
 db = sns.load_dataset("tips")
-db
 
 #################################################
 # Time değişkeninin kategorilerine (Dinner, Lunch) göre total_bill değerlerinin toplamını, min, max ve ortalamasını bulunuz.
@@ -150,12 +148,11 @@ db.loc[(db["size"]< 3)
 #################################################
 
 db["total_bill_tip_sum"] = db["total_bill"] + db["tip"]
-db
+
 
 #################################################
 # total_bill_tip_sum değişkenine göre büyükten küçüğe sıralayınız ve ilk 30 kişiyi yeni bir dataframe'e atayınız.
 #################################################
 
 new_db = db["total_bill_tip_sum"].sort_values(ascending=False).head(30)
-new_db
 
