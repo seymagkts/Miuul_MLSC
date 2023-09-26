@@ -128,7 +128,6 @@ agg_df["customers_level_based"] = ["_".join(txt).upper() for txt in agg_df.drop(
 
 agg_df = agg_df[['customers_level_based', 'PRICE']]
 agg_df = agg_df.groupby('customers_level_based')['PRICE'].mean().reset_index()
-agg_df
 
 #################################################
 # Yeni müşterileri (personaları) segmentlere ayırınız.
