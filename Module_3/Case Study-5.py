@@ -1,5 +1,15 @@
 ### DIABETES FEATURE ENGINEERING
 
+##### Pregnancies: Hamilelik sayısı
+##### Glucose: Glikoz
+##### BloodPressure: Kan basıncı (Diastolic(Küçük Tansiyon))
+##### SkinThickness: Cilt Kalınlığı
+##### Insulin: İnsülin.
+##### BMI: Beden kitle indeksi.
+##### DiabetesPedigreeFunction: Soyumuzdaki kişilere göre diyabet olma ihtimalimizi hesaplayan bir fonksiyon.
+##### Age: Yaş (yıl)
+##### Outcome: Kişinin diyabet olup olmadığı bilgisi. Hastalığa sahip (1) ya da değil (0)
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
