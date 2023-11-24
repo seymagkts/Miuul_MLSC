@@ -321,22 +321,22 @@ print(f"F1: {round(f1_score(y_pred, y_test), 4)}")
 print(f"Auc {round(roc_auc_score(y_pred, y_test), 4)}")
 
 def plot_feature_importance(importance, names, model_type):
-    # Create arrays from feature importance and feature names
+    # dizi olusturma
     feature_importance = np.array(importance)
     feature_names = np.array(names)
 
-    # Create a DataFrame using a Dictionary
+    # sözlük df olusturma
     data = {'feature_names': feature_names, 'feature_importance': feature_importance}
     fi_df = pd.DataFrame(data)
 
-    # Sort the DataFrame in order decreasing feature importance
+    # kucuge doğru sıralama
     fi_df.sort_values(by=['feature_importance'], ascending=False, inplace=True)
 
-    # Define size of bar plot
+    #  grafik boyut
     plt.figure(figsize=(15, 10))
-    # Plot Searborn bar chart
+    # Plot Searborn bar grafiği
     sns.barplot(x=fi_df['feature_importance'], y=fi_df['feature_names'])
-    # Add chart labels
+    # değerleri grafiğe ekleme
     plt.title(model_type + ' FEATURE IMPORTANCE')
     plt.xlabel('FEATURE IMPORTANCE')
     plt.ylabel('FEATURE NAMES')
