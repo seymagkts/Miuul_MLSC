@@ -35,7 +35,7 @@ rf_best_grid = GridSearchCV(rf_model,
                              n_jobs=-1,
                              verbose=1).fit(X,y)
 
-rf_best_grid.best_params_
+print(rf_best_grid.best_params_)
 
 rf_final = rf_model.set_params(**rf_best_grid.best_params_, random_state = 17).fit(X,y)
 
