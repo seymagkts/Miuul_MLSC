@@ -45,11 +45,11 @@ cv_results = cross_validate(rf_final,
                            cv=10,
                            scoring= ["accuracy","f1","roc_auc"]  )
 
-cv_results["test_accuracy"].mean()
+print(cv_results["test_accuracy"].mean())
 
-cv_results["test_f1"].mean()
+print(cv_results["test_f1"].mean())
 
-cv_results["test_roc_auc"].mean()
+print(cv_results["test_roc_auc"].mean())
 
 # değişkenlerin önem sırasına gore sıralar ve değerlerini verir
 def plot_importance(model, features, num=len(X), save=False):
