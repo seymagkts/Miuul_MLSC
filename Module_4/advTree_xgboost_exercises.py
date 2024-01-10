@@ -62,3 +62,18 @@ print(cv_results["test_f1"].mean())
 
 print(cv_results["test_roc_auc"].mean())
 
+# değişkenlerin önem sırasına gore sıralar ve değerlerini verir
+def plot_importance(model, features, num=len(X), save=False):
+    feature_imp = pd.DataFrame({'Value': model.feature_importances_, 'Feature': features.columns})
+    print(feature_imp.sort_values("Value",ascending=False))
+    plt.figure(figsize=(10, 10))
+    sns.set(font_scale=1)
+    sns.barplot(x="Value", y="Feature", data=feature_imp.sort_values(by="Value",
+                                                                     ascending=False)[0:num])
+    plt.title('Features')
+    plt.tight_layout()
+    plt.show(block=True)
+    if save:
+        plt.savefig('importances.png')
+
+  plot_importance(xgboost_final,X)
