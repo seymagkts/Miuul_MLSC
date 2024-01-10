@@ -33,7 +33,7 @@ print(cv_results["test_f1"].mean())
 
 print(cv_results["test_roc_auc"].mean())
 
-print(gbm_model.get_params())
+print(xgboost_model.get_params())
 
 xgboost_params = {"learning_rate":[0.01,0.1],
             'max_depth': [5,8,12],
