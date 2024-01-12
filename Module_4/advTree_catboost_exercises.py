@@ -78,3 +78,27 @@ def plot_importance(model, features, num=len(X), save=False):
 
 plot_importance(catboost_final,X)
 
+def val_curve_params(model, X, y, param_name, param_range, scoring="roc_auc",cv=10):
+    train_socre, test_score = validation_curve(model,
+                                              X=X, y=y,
+                                              param_name=param_name,
+                                              param_range=param_range,
+                                              cv=cv)
+    mean_train_score = np.mean(train_socre, axis=1)
+    mean_test_score = np.mean(test_score, axis=1)
+    
+    plt.plot(param_range, mean_train_score, label = "Training Score",color="b")
+    plt.plot(param_range, mean_test_score, label = "Validation Score",color="g")
+    
+    plt.title(f"Validation Curve for {type(model).__name__}")
+    plt.xlabel(f"Number of {param_name}")
+    plt.ylabel(f"{scoring}")
+    plt.tight_layout()
+    plt.show(block=True)
+
+catboost_params_arr = [["iterations", [500,700,1000]],
+                  ["learning_rate",[0.01,0.1]],
+                   ['depth', [3,6]]]
+
+for i in range(len(catboost_params_arr)):
+    val_curve_params(catboost_final, X, y, catboost_params_arr[i][0], catboost_params_arr[i][1])
