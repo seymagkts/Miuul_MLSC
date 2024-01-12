@@ -77,3 +77,29 @@ def plot_importance(model, features, num=len(X), save=False):
         plt.savefig('importances.png')
 
   plot_importance(xgboost_final,X)
+
+def val_curve_params(model, X, y, param_name, param_range, scoring="roc_auc",cv=10):
+    train_socre, test_score = validation_curve(model,
+                                              X=X, y=y,
+                                              param_name=param_name,
+                                              param_range=param_range,
+                                              cv=cv)
+    mean_train_score = np.mean(train_socre, axis=1)
+    mean_test_score = np.mean(test_score, axis=1)
+    
+    plt.plot(param_range, mean_train_score, label = "Training Score",color="b")
+    plt.plot(param_range, mean_test_score, label = "Validation Score",color="g")
+    
+    plt.title(f"Validation Curve for {type(model).__name__}")
+    plt.xlabel(f"Number of {param_name}")
+    plt.ylabel(f"{scoring}")
+    plt.tight_layout()
+    plt.show(block=True)
+
+xgboost_params_arr = [["learning_rate",[0.01,0.1,0.15]],
+            ['max_depth', [5,8,12]],
+             ['n_estimators', [100,500,1000]],
+             ["colsample_bytree",[1,0.5,0.7]]]
+
+for i in range(len(xgboost_params_arr)):
+    val_curve_params(xgboost_final, X, y, xgboost_params_arr[i][0], xgboost_params_arr[i][1])
