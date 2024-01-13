@@ -1,4 +1,4 @@
-#### Ev Fiyat Tahmin Modeli
+#### Makine Öğrenmesi ile Ev Fiyat Tahmin
 
 import numpy as np
 import pandas as pd
