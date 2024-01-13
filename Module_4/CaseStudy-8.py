@@ -19,10 +19,6 @@ from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 
-from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
-from catboost import CatBoostClassifier
-
 pd.set_option("display.max_columns", None)
 warnings.simplefilter(action="ignore", category=Warning)
 
